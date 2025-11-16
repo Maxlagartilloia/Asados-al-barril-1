@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Asados en Barril [CAMBIAR POR NOMBRE REAL] | Costillas de Cerdo y Parrilladas</title>
-  <meta name="description" content="Costillas de cerdo asadas en barril, carnes jugosas y combos parrilleros. Pide escaneando el QR en tu mesa o a domicilio por WhatsApp.">
+  <title>Asados en Barril [CAMBIAR POR NOMBRE REAL] | Costillas de Cerdo y Parrilladas a Domicilio</title>
+  <meta name="description" content="Costillas de cerdo asadas en barril, carnes jugosas y combos parrilleros con pedido por WhatsApp y pago por transferencia. Pide hoy mismo.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Asados en Barril [CAMBIAR POR NOMBRE REAL]">
-  <meta property="og:description" content="Menú interactivo con pedidos por WhatsApp: consumo en local (QR) o a domicilio.">
+  <meta property="og:description" content="Costillas de cerdo asadas en barril, carnes jugosas y combos parrilleros con pedido por WhatsApp.">
   <meta property="og:image" content="https://images.pexels.com/photos/4109136/pexels-photo-4109136.jpeg">
   <meta property="og:url" content="https://tusitio.com">
 
@@ -40,7 +40,7 @@
       letter-spacing: 0.04em;
     }
 
-    /* Fondo brasas y chispas */
+    /* Fondo de chispas de carbón */
     .spark-bg {
       position: relative;
       overflow: hidden;
@@ -69,11 +69,18 @@
     }
 
     @keyframes sparksFloat {
-      0% { transform: translateY(10%) scale(1); }
-      50% { transform: translateY(-10%) scale(1.05); }
-      100% { transform: translateY(10%) scale(1); }
+      0% {
+        transform: translateY(10%) scale(1);
+      }
+      50% {
+        transform: translateY(-10%) scale(1.05);
+      }
+      100% {
+        transform: translateY(10%) scale(1);
+      }
     }
 
+    /* Pequeñas chispas puntuales */
     .spark-layer {
       position: absolute;
       inset: 0;
@@ -94,6 +101,7 @@
       100% { opacity: 0.3; transform: translateY(2px); }
     }
 
+    /* Glassmorphism */
     .glass {
       background: linear-gradient(to bottom right, rgba(15, 15, 15, 0.9), rgba(5, 5, 5, 0.85));
       border-radius: 1.25rem;
@@ -146,6 +154,7 @@
       background: linear-gradient(135deg, rgba(255, 106, 0, 0.95), rgba(255, 59, 47, 0.95));
     }
 
+    /* Sidebar carrito */
     .cart-panel {
       transform: translateX(100%);
       transition: transform 0.25s ease-out;
@@ -190,12 +199,12 @@
         <!-- Acciones -->
         <div class="flex items-center gap-3">
           <a
-            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20acabo%20de%20ver%20el%20men%C3%BA%20de%20Asados%20en%20Barril%20y%20quiero%20hacer%20un%20pedido%20(consumo%20en%20local%20o%20a%20domicilio)."
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20quiero%20hacer%20un%20pedido%20de%20asados%20en%20barril."
             target="_blank"
             class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full btn-ghost"
           >
             <span class="text-green-400 text-sm">●</span>
-            Abrir WhatsApp (QR / domicilio)
+            Pedir por WhatsApp
           </a>
 
           <!-- Carrito -->
@@ -215,7 +224,7 @@
             >0</span>
           </button>
 
-          <!-- Mobile menu -->
+          <!-- Mobile menu (solo links simples) -->
           <button id="mobileMenuBtn" class="md:hidden h-8 w-8 flex items-center justify-center rounded-lg bg-black/40 border border-white/10">
             <span class="sr-only">Abrir menú</span>
             <svg class="h-4 w-4 text-slate-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -236,12 +245,12 @@
           <a href="#opiniones" class="hover:text-amber-400 transition-colors">Opiniones</a>
           <a href="#ubicacion" class="hover:text-amber-400 transition-colors">Ubicación</a>
           <a
-            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20acabo%20de%20ver%20el%20men%C3%BA%20de%20Asados%20en%20Barril%20y%20quiero%20hacer%20un%20pedido%20(consumo%20en%20local%20o%20a%20domicilio)."
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20quiero%20hacer%20un%20pedido%20de%20asados%20en%20barril."
             target="_blank"
             class="mt-1 inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full btn-ghost w-max"
           >
             <span class="text-green-400 text-sm">●</span>
-            Abrir WhatsApp
+            Pedir por WhatsApp
           </a>
         </div>
       </nav>
@@ -260,9 +269,9 @@
 
       <!-- Texto -->
       <div class="w-full lg:w-1/2 space-y-7">
-        <p class="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-black/40 px-3 py-1 text-[11px] font-medium text-amber-200 shadow-sm shadow-amber-500/30">
+        <p class="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-black/40 px-3 py-1 text-xs font-medium text-amber-200 shadow-sm shadow-amber-500/30">
           <span class="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-          Menú interactivo · Escanea el QR en tu mesa o pide a domicilio
+          Costillas de cerdo asadas en barril · [CIUDAD]
         </p>
 
         <h1 class="font-hero text-4xl sm:text-5xl lg:text-6xl leading-tight text-slate-50 drop-shadow-[0_0_35px_rgba(0,0,0,0.9)]">
@@ -274,9 +283,8 @@
         </h1>
 
         <p class="text-sm sm:text-base text-slate-200/90 max-w-xl">
-          Escanea el <span class="font-semibold text-amber-300">QR en tu mesa</span> para hacer tu pedido
-          desde el restaurante, o usa esta misma página para pedir
-          <span class="font-semibold text-amber-300">a domicilio</span> con entrega en tu casa.
+          Asamos lentamente en barril para que cada bocado tenga humo justo, carne suave y sabor profundo.
+          Pide a domicilio o retira en el local. Tú solo preocúpate de invitar a los que más quieres.
         </p>
 
         <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-100/90">
@@ -290,13 +298,13 @@
             <span class="h-5 w-5 rounded-full flex items-center justify-center bg-amber-500/20 text-amber-300">
               ✓
             </span>
-            Pide por QR en el local o desde tu casa
+            Asado lento en barril, sabor profundo
           </li>
           <li class="flex items-center gap-2">
             <span class="h-5 w-5 rounded-full flex items-center justify-center bg-amber-500/20 text-amber-300">
               ✓
             </span>
-            Pedido y confirmación por WhatsApp
+            Pedidos para domicilio o retiro en local
           </li>
         </ul>
 
@@ -306,7 +314,7 @@
             Ver Menú y Hacer Pedido
           </a>
           <a
-            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20acabo%20de%20ver%20el%20men%C3%BA%20de%20Asados%20en%20Barril%20y%20quiero%20hacer%20un%20pedido%20(consumo%20en%20local%20o%20a%20domicilio)."
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20quiero%20hacer%20un%20pedido%20de%20asados%20en%20barril."
             target="_blank"
             class="btn-ghost inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-slate-50"
           >
@@ -314,12 +322,13 @@
               <path
                 d="M12.04 2C6.56 2 2.2 6.18 2.2 11.52c0 1.86.54 3.6 1.47 5.07L2 22l5.6-1.8a9.9 9.9 0 0 0 4.44 1.04c5.48 0 9.84-4.18 9.84-9.52C21.88 6.18 17.52 2 12.04 2Zm0 17.07c-1.5 0-2.9-.4-4.1-1.16l-.3-.18-3.32 1.07 1.08-3.2-.2-.32a7.7 7.7 0 0 1-1.2-4.06c0-4.28 3.54-7.76 7.84-7.76 4.3 0 7.84 3.48 7.84 7.76s-3.54 7.75-7.84 7.75Zm4.3-5.76c-.24-.13-1.42-.73-1.64-.81-.22-.09-.38-.13-.54.13-.16.25-.62.81-.76.97-.14.16-.28.18-.52.06-.24-.13-1-.37-1.9-1.16-.7-.62-1.18-1.38-1.32-1.61-.14-.24-.01-.37.12-.5.12-.12.24-.28.36-.42.12-.14.16-.23.24-.38.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.68 4.16 3.64 1.46.58 2.04.63 2.77.53.44-.06 1.42-.58 1.62-1.13.2-.55.2-1.03.14-1.13-.06-.1-.22-.16-.46-.29Z" />
             </svg>
-            Abrir WhatsApp ahora
+            Pedir directo por WhatsApp
           </a>
         </div>
 
         <p class="text-[11px] text-slate-400 max-w-xs">
-          *Funciona como menú digital dentro del restaurante (escaneando un QR) y también para pedidos a domicilio.
+          *Teléfono / WhatsApp del local:
+          <span class="text-amber-300 font-semibold">[NUMERO_WHATSAPP_CON_CODIGO_PAIS]</span>
         </p>
       </div>
 
@@ -338,10 +347,10 @@
             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3">
               <div>
                 <p class="text-[11px] uppercase tracking-[0.24em] text-amber-300 font-semibold">
-                  Modo QR · Modo Domicilio
+                  Fuego lento · Sabor intenso
                 </p>
                 <p class="mt-1 text-sm font-semibold text-slate-50">
-                  Escanea el código en tu mesa o comparte el link para pedir desde casa.
+                  Pedido mínimo recomendado para 2 personas
                 </p>
               </div>
               <div class="text-right bg-black/50 px-3 py-2 rounded-xl border border-white/10">
@@ -387,8 +396,13 @@
             ¿Por qué nuestro asado en barril sabe diferente?
           </h2>
           <p class="text-sm sm:text-base text-slate-200/90 mb-4">
-            No es solo una parrillada más. Es un sistema de cocción en barril pensado para mesas felices:
-            tanto si pides desde tu mesa con un QR como si pides a domicilio.
+            No es solo carne a la parrilla. Es una técnica de cocción lenta que respeta el corte,
+            concentra los jugos y deja la grasa en el punto justo para que cada bocado sea suave, ahumado
+            y lleno de sabor.
+          </p>
+          <p class="text-sm text-slate-300/90 mb-5">
+            Usamos barriles acondicionados, control de temperatura y marinados caseros. Así evitamos humo
+            excesivo y logramos ese equilibrio perfecto entre crocante por fuera y tierno por dentro.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-200">
@@ -406,12 +420,12 @@
 
             <div class="flex items-start gap-3">
               <div class="mt-1 h-7 w-7 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
-                📱
+                🥩
               </div>
               <div>
-                <p class="font-semibold">Menú digital por QR</p>
+                <p class="font-semibold">Cortes seleccionados</p>
                 <p class="text-xs text-slate-400">
-                  Los clientes piden desde la mesa y tú recibes todo por WhatsApp.
+                  Elegimos costillas y carnes con el marmoleo ideal para el barril.
                 </p>
               </div>
             </div>
@@ -430,41 +444,43 @@
 
             <div class="flex items-start gap-3">
               <div class="mt-1 h-7 w-7 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
-                🚚
+                ✅
               </div>
               <div>
-                <p class="font-semibold">También a domicilio</p>
+                <p class="font-semibold">Higiene y orden</p>
                 <p class="text-xs text-slate-400">
-                  Empacado para que llegue caliente y listo para servir.
+                  Manipulación cuidada en cada etapa, desde el corte hasta el empaque.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Mini cards -->
+        <!-- Mini showcase -->
         <div class="grid gap-4 md:gap-5">
           <div class="card-product p-4 flex gap-3 items-center">
             <div class="flex-1">
-              <p class="text-xs uppercase tracking-[0.25em] text-amber-400 mb-1">Escanea y pide</p>
+              <p class="text-xs uppercase tracking-[0.25em] text-amber-400 mb-1">Experiencia Barril</p>
               <p class="text-sm text-slate-200">
-                Coloca este link en un QR en cada mesa y tus clientes piden directamente desde su celular.
+                Ideal para reuniones familiares, cumpleaños, partidos de fútbol o simplemente cuando
+                quieres comer bien sin cocinar.
               </p>
             </div>
             <div class="text-right text-xs text-slate-400">
-              <p>Uso</p>
-              <p class="text-amber-300 font-semibold text-base">En local + delivery</p>
+              <p>Desde</p>
+              <p class="text-lg font-semibold text-amber-300">$[PRECIO_PERSONA]</p>
+              <p>por persona</p>
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div class="card-product p-3">
-              <p class="text-xs font-semibold text-amber-300 mb-1">Consumo en local</p>
-              <p class="text-xs text-slate-300">Seleccionan “Consumo en local (QR)” y añaden el número de mesa.</p>
+              <p class="text-xs font-semibold text-amber-300 mb-1">Domicilio</p>
+              <p class="text-xs text-slate-300">Preparado, empacado y listo para servir apenas llegue.</p>
             </div>
             <div class="card-product p-3">
-              <p class="text-xs font-semibold text-amber-300 mb-1">Pedido a domicilio</p>
-              <p class="text-xs text-slate-300">Seleccionan “Domicilio” y completan dirección y referencias.</p>
+              <p class="text-xs font-semibold text-amber-300 mb-1">Retiro en local</p>
+              <p class="text-xs text-slate-300">Pasa, recoge tu pedido y llévatelo directo a la mesa.</p>
             </div>
           </div>
         </div>
@@ -473,12 +489,507 @@
   </section>
 
   <!-- MENÚ -->
-  <!-- (SECCIÓN DE PRODUCTOS IGUAL QUE ANTES, NO LA REPITO EN COMENTARIO) -->
-  <!-- *** SOLO CORTO EXPLICACIÓN: EL CÓDIGO DE PRODUCTOS ES EL MISMO QUE TE ENTREGUÉ ARRIBA *** -->
-  <!-- A PARTIR DE AQUÍ SIGUE TODO IGUAL HASTA LA SECCIÓN COMO-PEDIR Y SOLO CAMBIAREMOS LOS TEXTOS -->
+  <section id="menu" class="py-14 sm:py-18 lg:py-20 bg-[radial-gradient(circle_at_top,_#1f2937_0,_#020617_55%,_#000_100%)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400">
+            Menú en Barril
+          </p>
+          <h2 class="font-hero text-3xl sm:text-4xl text-slate-50 mt-1">
+            Elige tu asado en barril
+          </h2>
+          <p class="text-sm sm:text-base text-slate-200/90 mt-2 max-w-xl">
+            Arma tu pedido con nuestras costillas, alitas y cortes especiales. Ajusta las cantidades
+            y mira el total en tu carrito antes de confirmar.
+          </p>
+        </div>
+        <div class="text-xs text-slate-400">
+          <p>📞 Pedidos también al:</p>
+          <p class="text-amber-300 font-semibold">[NUMERO_WHATSAPP_CON_CODIGO_PAIS]</p>
+        </div>
+      </div>
 
-  <!-- ... AQUÍ VAN TODOS LOS <article> CON LOS 10 PRODUCTOS Y LOS COMBOS, IGUALITOS A LA VERSIÓN ANTERIOR ... -->
-  <!-- (Por espacio no los repito en comentario; mantenlos tal cual y solo pega este archivo completo sobre el anterior) -->
+      <!-- GRID PRODUCTOS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cada producto: data-id, data-name, data-price -->
+        <!-- 1 -->
+        <article class="card-product p-4 flex flex-col" data-id="1" data-name="Costillas de cerdo en barril 1 kg" data-price="14.99">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/4109130/pexels-photo-4109130.jpeg"
+                 alt="Costillas de cerdo en barril 1 kg"
+                 class="w-full h-40 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <span class="absolute top-2 left-2 px-2 py-1 rounded-full text-[11px] font-semibold badge-fire">
+              Top ventas
+            </span>
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Costillas de cerdo en barril 1 kg
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Costillas marinadas por horas y asadas en barril hasta lograr textura crocante y jugosa.
+            Ideal para 2–3 personas.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$14.99</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 2 -->
+        <article class="card-product p-4 flex flex-col" data-id="2" data-name="Costillas mixtas (cerdo y res) 1.2 kg" data-price="18.50">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/5718020/pexels-photo-5718020.jpeg"
+                 alt="Costillas mixtas 1.2 kg"
+                 class="w-full h-40 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Costillas mixtas (cerdo y res) 1.2 kg
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Mezcla perfecta de costillas de cerdo y res, con doble sabor ahumado y textura suave.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$18.50</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 3 -->
+        <article class="card-product p-4 flex flex-col" data-id="3" data-name="Alitas BBQ en barril 12 unidades" data-price="10.90">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/4109131/pexels-photo-4109131.jpeg"
+                 alt="Alitas BBQ en barril"
+                 class="w-full h-40 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Alitas BBQ en barril (12 unidades)
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Alitas bañadas en salsa BBQ casera, caramelizadas con el calor del barril.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$10.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 4 -->
+        <article class="card-product p-4 flex flex-col" data-id="4" data-name="Chorizos parrilleros en barril (8 unidades)" data-price="9.50">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg"
+                 alt="Chorizos parrilleros en barril"
+                 class="w-full h-40 object-cover">
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Chorizos parrilleros en barril (8 unidades)
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Chorizos jugosos con ligero crocante exterior, asados en barril para mantener todo su sabor.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$9.50</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 5 -->
+        <article class="card-product p-4 flex flex-col" data-id="5" data-name="Pechuga de pollo en barril 750 g" data-price="11.90">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/3756523/pexels-photo-3756523.jpeg"
+                 alt="Pechuga de pollo en barril"
+                 class="w-full h-40 object-cover">
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Pechuga de pollo en barril 750 g
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Pechugas marinadas con especias suaves, jugosas y doradas, perfectas para quienes prefieren pollo.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$11.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 6 -->
+        <article class="card-product p-4 flex flex-col" data-id="6" data-name="Tira de asado en barril 900 g" data-price="17.80">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg"
+                 alt="Tira de asado en barril"
+                 class="w-full h-40 object-cover">
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Tira de asado en barril 900 g
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Tira de asado con grasa justa para derretirse y perfumar toda la pieza en el barril.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$17.80</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 7 -->
+        <article class="card-product p-4 flex flex-col" data-id="7" data-name="Costillas en barril + papas rusticas" data-price="16.50">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg"
+                 alt="Costillas en barril con papas rústicas"
+                 class="w-full h-40 object-cover">
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Costillas en barril + papas rústicas
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Costillas en barril acompañadas de papas rústicas y salsas de la casa.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$16.50</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 8 -->
+        <article class="card-product p-4 flex flex-col" data-id="8" data-name="Combo parrillero pequeño (2 personas)" data-price="24.90">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/3731474/pexels-photo-3731474.jpeg"
+                 alt="Combo parrillero pequeño"
+                 class="w-full h-40 object-cover">
+            <span class="absolute top-2 left-2 px-2 py-1 rounded-full text-[11px] font-semibold bg-slate-900/80 text-amber-300 border border-amber-400/70">
+              Nuevo
+            </span>
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Combo parrillero pequeño (2 personas)
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Costillas, alitas y chorizo en barril, ideal para una cita o cena en pareja.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$24.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 9 -->
+        <article class="card-product p-4 flex flex-col" data-id="9" data-name="Combo familiar barril (4–5 personas)" data-price="42.90">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/3756520/pexels-photo-3756520.jpeg"
+                 alt="Combo familiar barril"
+                 class="w-full h-40 object-cover">
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Combo familiar barril (4–5 personas)
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Costillas, pollo, chorizo, acompañamientos y salsas. La opción perfecta para la familia.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$42.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+
+        <!-- 10 -->
+        <article class="card-product p-4 flex flex-col" data-id="10" data-name="Pan, ensaladas y salsas extras" data-price="5.90">
+          <div class="relative rounded-xl overflow-hidden mb-3">
+            <img src="https://images.pexels.com/photos/1435896/pexels-photo-1435896.jpeg"
+                 alt="Pan, ensaladas y salsas extras"
+                 class="w-full h-40 object-cover">
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Pan, ensaladas y salsas extras
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 flex-1">
+            Pan tostado, ensalada fresca y salsas caseras para completar tu experiencia en barril.
+          </p>
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <div class="text-sm">
+              <p class="text-slate-400 text-xs">Precio</p>
+              <p class="text-amber-300 font-semibold text-base">$5.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-3 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar al carrito
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOS -->
+  <section id="promos" class="py-12 sm:py-16 lg:py-18 bg-gradient-to-b from-black via-slate-950 to-black">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400">
+            Combos Especiales
+          </p>
+          <h2 class="font-hero text-3xl sm:text-4xl text-slate-50 mt-1">
+            Promos y combos barrileros
+          </h2>
+          <p class="text-sm text-slate-200/90 mt-2 max-w-xl">
+            Ahorra pidiendo combos pensados para familias, cumpleaños y partidos con amigos.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <!-- Combo 1 -->
+        <article class="card-product p-5 flex flex-col" data-id="c1" data-name="Combo Fiestero Barril (8–10 personas)" data-price="79.90">
+          <p class="text-xs uppercase tracking-[0.15em] text-amber-400 mb-1">Combo Fiestero</p>
+          <h3 class="text-lg font-semibold text-slate-50">
+            Combo Fiestero Barril (8–10 personas)
+          </h3>
+          <p class="text-xs text-slate-300 mt-2 flex-1">
+            2 kg de costillas en barril, 1 kg de alitas BBQ, 1 kg de chorizo parrillero, papas rústicas,
+            ensalada y salsas caseras.
+          </p>
+          <ul class="mt-3 text-[11px] text-slate-400 space-y-1">
+            <li>• Ideal para reuniones grandes o cumpleaños.</li>
+            <li>• Ahorro frente a comprar los productos por separado.</li>
+          </ul>
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <div>
+              <p class="text-[11px] text-slate-400 line-through">$92.50</p>
+              <p class="text-amber-300 font-semibold text-xl">$79.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-4 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar combo al carrito
+          </button>
+        </article>
+
+        <!-- Combo 2 -->
+        <article class="card-product p-5 flex flex-col" data-id="c2" data-name="Combo Familiar Barril Plus (5–6 personas)" data-price="54.90">
+          <p class="text-xs uppercase tracking-[0.15em] text-amber-400 mb-1">Combo Familiar</p>
+          <h3 class="text-lg font-semibold text-slate-50">
+            Combo Familiar Barril Plus (5–6 personas)
+          </h3>
+          <p class="text-xs text-slate-300 mt-2 flex-1">
+            1.5 kg de costillas, 1 kg de pollo, chorizo, papas y ensalada. Perfecto para almuerzos
+            familiares de fin de semana.
+          </p>
+          <ul class="mt-3 text-[11px] text-slate-400 space-y-1">
+            <li>• Perfecto para la familia completa.</li>
+            <li>• Incluye acompañamientos principales.</li>
+          </ul>
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <div>
+              <p class="text-[11px] text-slate-400 line-through">$61.20</p>
+              <p class="text-amber-300 font-semibold text-xl">$54.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-4 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar combo al carrito
+          </button>
+        </article>
+
+        <!-- Combo 3 -->
+        <article class="card-product p-5 flex flex-col" data-id="c3" data-name="Combo Partido Barril (4 personas)" data-price="36.90">
+          <p class="text-xs uppercase tracking-[0.15em] text-amber-400 mb-1">Combo Partido</p>
+          <h3 class="text-lg font-semibold text-slate-50">
+            Combo Partido Barril (4 personas)
+          </h3>
+          <p class="text-xs text-slate-300 mt-2 flex-1">
+            Pensado para ver el partido: costillas, alitas y chorizo con papas y salsas para compartir.
+          </p>
+          <ul class="mt-3 text-[11px] text-slate-400 space-y-1">
+            <li>• Ideal para ver fútbol o peleas.</li>
+            <li>• Listo para servir en la mesa.</li>
+          </ul>
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <div>
+              <p class="text-[11px] text-slate-400 line-through">$41.50</p>
+              <p class="text-amber-300 font-semibold text-xl">$36.90</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="qty-minus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                −
+              </button>
+              <input type="number" min="1" value="1"
+                     class="qty-input w-10 h-8 text-xs text-center rounded-full bg-black/70 border border-white/10 text-slate-100">
+              <button class="qty-plus h-8 w-8 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+                +
+              </button>
+            </div>
+          </div>
+          <button class="mt-4 btn-fire w-full rounded-full py-2.5 text-xs font-semibold text-slate-900 add-to-cart">
+            Agregar combo al carrito
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- CÓMO PEDIR -->
   <section id="como-pedir" class="py-12 sm:py-16 lg:py-18 bg-gradient-to-b from-black via-slate-950 to-slate-950">
@@ -491,7 +1002,7 @@
           ¿Cómo funciona tu pedido?
         </h2>
         <p class="text-sm text-slate-200/90 mt-2">
-          Funciona igual si estás en el restaurante (escaneando un QR en la mesa) o pidiendo desde tu casa.
+          No necesitas registrarte ni complicarte. En 3 pasos tienes tu pedido listo y confirmado por WhatsApp.
         </p>
       </div>
 
@@ -505,7 +1016,7 @@
             Elige tus costillas y cortes
           </h3>
           <p class="text-xs text-slate-300 mt-2">
-            Entra con el QR de tu mesa o desde el enlace y arma tu pedido desde el menú.
+            Explora el menú, ajusta las cantidades y agrega todo al carrito.
           </p>
         </div>
 
@@ -515,10 +1026,10 @@
             2
           </div>
           <h3 class="text-sm font-semibold text-slate-50">
-            Elige “Consumo en local” o “Domicilio”
+            Llena tus datos y paga
           </h3>
           <p class="text-xs text-slate-300 mt-2">
-            Completa tus datos, tu número de mesa si estás en el local, o tu dirección si es a domicilio.
+            Completa tu nombre, celular, dirección y realiza tu transferencia o depósito.
           </p>
         </div>
 
@@ -528,7 +1039,7 @@
             3
           </div>
           <h3 class="text-sm font-semibold text-slate-50">
-            Confirma por WhatsApp
+            Envía tu comprobante por WhatsApp
           </h3>
           <p class="text-xs text-slate-300 mt-2">
             Haz clic en “Pagar y enviar pedido por WhatsApp”, adjunta el comprobante y listo.
@@ -538,8 +1049,187 @@
     </div>
   </section>
 
-  <!-- (SECCIÓN OPINIONES, UBICACIÓN, CONTACTO Y FOOTER SE MANTIENEN IGUAL QUE ANTES) -->
-  <!-- IMPORTANTE: A CONTINUACIÓN VIENE EL PANEL CARRITO, QUE ES DONDE SE AGREGAN LOS NUEVOS CAMPOS PARA QR / DOMICILIO -->
+  <!-- TESTIMONIOS -->
+  <section id="opiniones" class="py-12 sm:py-16 lg:py-18 bg-gradient-to-b from-slate-950 via-black to-black">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400">
+            Opiniones reales
+          </p>
+          <h2 class="font-hero text-3xl sm:text-4xl text-slate-50 mt-1">
+            Lo que dicen nuestros clientes
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="glass p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-xs text-slate-100">
+              JM
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-slate-50">Juan Morales</p>
+              <p class="text-[11px] text-slate-400">Cliente frecuente</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-200 mb-3">
+            “Las costillas en barril son otra cosa. La carne se despega sola del hueso y el sabor ahumado es perfecto.
+            Desde que probamos, dejamos de hacer parrillada en casa.”
+          </p>
+          <div class="text-[11px] text-amber-300">★★★★★</div>
+        </article>
+
+        <article class="glass p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-xs text-slate-100">
+              AC
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-slate-50">Ana Carvajal</p>
+              <p class="text-[11px] text-slate-400">Cumpleaños familiar</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-200 mb-3">
+            “Pedimos un combo familiar para el cumpleaños de mi papá y fue un éxito.
+            Llegó caliente, bien empacado y alcanzó perfecto para todos.”
+          </p>
+          <div class="text-[11px] text-amber-300">★★★★★</div>
+        </article>
+
+        <article class="glass p-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-xs text-slate-100">
+              LG
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-slate-50">Luis García</p>
+              <p class="text-[11px] text-slate-400">Partidos de fútbol</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-200 mb-3">
+            “Perfecto para ver los partidos con mis panas. Pedimos el combo partido barril y siempre quedamos llenos y contentos.”
+          </p>
+          <div class="text-[11px] text-amber-300">★★★★★</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section id="ubicacion" class="py-12 sm:py-16 lg:py-18 bg-gradient-to-b from-black via-slate-950 to-black">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400">
+            Ubicación
+          </p>
+          <h2 class="font-hero text-3xl sm:text-4xl text-slate-50 mt-1">
+            Ven a visitarnos o pide a domicilio
+          </h2>
+          <p class="text-sm text-slate-200/90 mt-2 mb-4">
+            Estamos en
+            <span class="font-semibold text-amber-300">[DIRECCIÓN COMPLETA]</span>
+            en la ciudad de
+            <span class="font-semibold text-amber-300">[CIUDAD]</span>.
+          </p>
+
+          <div class="text-sm text-slate-200 space-y-2 mb-5">
+            <p>🕓 Horario de atención:</p>
+            <ul class="text-xs text-slate-300 space-y-1">
+              <li>Lunes a viernes: 12:00 pm – 10:00 pm</li>
+              <li>Sábados y domingos: 11:00 am – 11:00 pm</li>
+            </ul>
+            <p class="pt-2">📱 Teléfono / WhatsApp: <span class="text-amber-300 font-semibold">[NUMERO_WHATSAPP_CON_CODIGO_PAIS]</span></p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="[URL_GOOGLE_MAPS_LOCAL]"
+              target="_blank"
+              class="btn-ghost inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-slate-50"
+            >
+              Abrir ubicación en Google Maps
+            </a>
+
+            <button
+              id="openCartFromLocation"
+              class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold bg-slate-900/80 border border-amber-400/60 text-amber-200 hover:border-amber-300"
+            >
+              Ver carrito y confirmar pedido
+            </button>
+          </div>
+        </div>
+
+        <div class="glass overflow-hidden">
+          <div class="aspect-[4/3] w-full">
+            <!-- Reemplaza src del iframe por tu URL embebida de Google Maps -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.823076649037!2d-79.0!3d-0.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwNTInMDAuMCJTIDc5wrAwMCcwMC4wIlc!5e0!3m2!1ses!2sec!4v1700000000000"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO LOCAL + FOOTER -->
+  <section id="contacto" class="py-10 bg-black">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6 border-b border-white/10 pb-6 mb-4">
+        <div class="space-y-2">
+          <p class="font-hero text-2xl text-slate-50">Asados en Barril</p>
+          <p class="text-xs text-slate-400">[CAMBIAR POR NOMBRE REAL]</p>
+          <p class="text-xs text-slate-300 mt-2">
+            Costillas de cerdo y cortes seleccionados asados en barril con fuego lento, para que cada
+            reunión tenga sabor de celebración.
+          </p>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-300">
+          <p class="font-semibold text-slate-100 mb-1">Datos de contacto</p>
+          <p>📍 Dirección: <span class="text-slate-100">[DIRECCIÓN COMPLETA]</span></p>
+          <p>📱 WhatsApp: <span class="text-amber-300 font-semibold">[NUMERO_WHATSAPP_CON_CODIGO_PAIS]</span></p>
+          <p>🏦 Cuenta bancaria:</p>
+          <p class="text-[11px] text-slate-400">
+            [BANCO, TIPO DE CUENTA, NÚMERO, TITULAR]
+          </p>
+          <a
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20quiero%20información%20sobre%20los%20asados%20en%20barril."
+            target="_blank"
+            class="inline-flex items-center gap-2 mt-1 text-amber-300 hover:text-amber-200"
+          >
+            Enviar mensaje por WhatsApp →
+          </a>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-300">
+          <p class="font-semibold text-slate-100 mb-1">Redes sociales</p>
+          <p>Síguenos para ver promociones y fotos de los asados:</p>
+          <div class="flex items-center gap-3 mt-1">
+            <a href="#" class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-slate-100 text-xs">
+              Fb
+            </a>
+            <a href="#" class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-slate-100 text-xs">
+              Ig
+            </a>
+            <a href="#" class="h-8 w-8 rounded-full bg-slate-900 flex items-center justify-center text-slate-100 text-xs">
+              Tk
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
+        <p>© <span id="yearSpan"></span> Asados en Barril [CAMBIAR POR NOMBRE REAL]. Todos los derechos reservados.</p>
+        <p class="text-slate-600">
+          Sitio desarrollado para maximizar tus antojos de asado en barril.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- PANEL CARRITO -->
   <aside
@@ -552,9 +1242,6 @@
           Tu pedido
         </p>
         <p class="text-sm text-slate-50 font-semibold">Carrito de asados en barril</p>
-        <p class="text-[11px] text-slate-400">
-          Funciona para pedidos en mesa (QR) y pedidos a domicilio.
-        </p>
       </div>
       <button id="closeCart" class="h-8 w-8 flex items-center justify-center rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
         ✕
@@ -566,7 +1253,9 @@
       <!-- Lista de productos -->
       <div>
         <p class="text-xs font-semibold text-slate-200 mb-2">Resumen de productos</p>
-        <div id="cartItems" class="space-y-3 text-xs text-slate-100"></div>
+        <div id="cartItems" class="space-y-3 text-xs text-slate-100">
+          <!-- Items se agregan por JS -->
+        </div>
         <p id="emptyCartText" class="text-xs text-slate-400 mt-1">Tu carrito está vacío. Agrega productos desde el menú.</p>
       </div>
 
@@ -588,7 +1277,7 @@
 
       <!-- FORM DATOS CLIENTE -->
       <div>
-        <p class="text-xs font-semibold text-slate-200 mb-2">Paso 1: Tus datos y tipo de servicio</p>
+        <p class="text-xs font-semibold text-slate-200 mb-2">Paso 1: Tus datos y dirección</p>
         <div class="space-y-2 text-xs">
           <div>
             <label for="clientName" class="block text-slate-300 mb-1">Nombre completo *</label>
@@ -599,38 +1288,32 @@
             <input id="clientPhone" type="tel" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. 09XXXXXXXX">
           </div>
           <div>
-            <p class="block text-slate-300 mb-1">Tipo de servicio *</p>
-            <div class="flex flex-col gap-1">
-              <label class="inline-flex items-center gap-2 text-slate-200">
-                <input type="radio" name="deliveryType" value="Consumo en local (QR)" class="accent-amber-500">
-                <span class="text-xs">Consumo en local (escaneando el QR en la mesa)</span>
-              </label>
-              <label class="inline-flex items-center gap-2 text-slate-200">
-                <input type="radio" name="deliveryType" value="Domicilio" class="accent-amber-500">
-                <span class="text-xs">Domicilio (entrega en tu casa u oficina)</span>
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <label for="clientTable" class="block text-slate-300 mb-1">Número de mesa (solo si estás en el local)</label>
-            <input id="clientTable" type="text" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. Mesa 4, terraza, etc.">
-          </div>
-
-          <div>
             <label for="clientCity" class="block text-slate-300 mb-1">Ciudad / Sector *</label>
-            <input id="clientCity" type="text" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. [CIUDAD], barrio o sector">
+            <input id="clientCity" type="text" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. [CIUDAD], barrio, sector">
           </div>
           <div>
             <label for="clientAddress" class="block text-slate-300 mb-1">Dirección completa para entrega *</label>
-            <textarea id="clientAddress" rows="2" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Si es consumo en local puedes escribir 'En restaurante' / 'En mesa'. Si es domicilio, pon la dirección."></textarea>
+            <textarea id="clientAddress" rows="2" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Calle, número, referencia principal"></textarea>
           </div>
           <div>
             <label for="clientRef" class="block text-slate-300 mb-1">Referencias de ubicación</label>
             <textarea id="clientRef" rows="2" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. Casa verde junto a la tienda, portón negro, etc."></textarea>
           </div>
           <div>
-            <label for="clientMapsLink" class="block text-slate-300 mb-1">Pega aquí tu ubicación de Google Maps (solo domicilios, opcional)</label>
+            <p class="block text-slate-300 mb-1">Tipo de entrega *</p>
+            <div class="flex items-center gap-4">
+              <label class="inline-flex items-center gap-2 text-slate-200">
+                <input type="radio" name="deliveryType" value="Domicilio" class="accent-amber-500">
+                <span class="text-xs">Domicilio</span>
+              </label>
+              <label class="inline-flex items-center gap-2 text-slate-200">
+                <input type="radio" name="deliveryType" value="Retiro en local" class="accent-amber-500">
+                <span class="text-xs">Retiro en local</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="clientMapsLink" class="block text-slate-300 mb-1">Pega aquí tu ubicación de Google Maps (opcional)</label>
             <input id="clientMapsLink" type="url" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="https://maps.app.goo.gl/...">
           </div>
           <div class="flex flex-wrap gap-2 mt-1">
@@ -678,21 +1361,24 @@
   </aside>
 
   <script>
-    // CONFIG BÁSICA
-    const WHATSAPP_NUMBER = "[NUMERO_WHATSAPP_CON_CODIGO_PAIS]"; // Ej: 5939XXXXXXXX
+    // CONFIGURACIÓN BÁSICA EDITABLE
+    const WHATSAPP_NUMBER = "[NUMERO_WHATSAPP_CON_CODIGO_PAIS]"; // Ej. 5939XXXXXXXX
     const BANK_DATA = "[BANCO, TIPO DE CUENTA, NÚMERO, TITULAR, CÉDULA/RUC]";
     const BUSINESS_NAME = "Asados en Barril [CAMBIAR POR NOMBRE REAL]";
 
-    document.getElementById("yearSpan")?.textContent = new Date().getFullYear();
+    // Año footer
+    document.getElementById("yearSpan").textContent = new Date().getFullYear();
 
+    // Menú móvil
     const mobileMenuBtn = document.getElementById("mobileMenuBtn");
     const mobileNav = document.getElementById("mobileNav");
     mobileMenuBtn.addEventListener("click", () => {
       mobileNav.classList.toggle("hidden");
     });
 
-    // Carrito
+    // Carrito - estructura
     let cart = [];
+
     const cartButton = document.getElementById("cartButton");
     const cartPanel = document.getElementById("cartPanel");
     const closeCartBtn = document.getElementById("closeCart");
@@ -701,13 +1387,26 @@
     const emptyCartText = document.getElementById("emptyCartText");
     const cartSubtotal = document.getElementById("cartSubtotal");
     const cartTotal = document.getElementById("cartTotal");
+    const openCartFromLocation = document.getElementById("openCartFromLocation");
 
-    function openCart() { cartPanel.classList.add("open"); }
-    function closeCart() { cartPanel.classList.remove("open"); }
+    function openCart() {
+      cartPanel.classList.add("open");
+    }
+
+    function closeCart() {
+      cartPanel.classList.remove("open");
+    }
+
     cartButton.addEventListener("click", openCart);
     closeCartBtn.addEventListener("click", closeCart);
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
+    openCartFromLocation.addEventListener("click", openCart);
 
+    // Click fuera del panel en pantallas grandes (opcional)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeCart();
+    });
+
+    // Cantidades + / -
     function attachQtyListeners(scope = document) {
       scope.querySelectorAll(".qty-plus").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -729,9 +1428,11 @@
 
     attachQtyListeners(document);
 
+    // Agregar al carrito
     function addToCart(productId, name, price, qty) {
       price = parseFloat(price);
       qty = parseInt(qty, 10);
+
       const existing = cart.find(item => item.id === productId);
       if (existing) {
         existing.qty += qty;
@@ -763,12 +1464,14 @@
       }
 
       let subtotal = 0;
+
       cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
         subtotal += itemTotal;
 
         const row = document.createElement("div");
         row.className = "flex items-start justify-between gap-3 border border-white/5 rounded-xl px-3 py-2";
+
         row.innerHTML = `
           <div class="flex-1">
             <p class="text-[11px] font-semibold text-slate-50 line-clamp-2">${item.name}</p>
@@ -785,6 +1488,7 @@
           </div>
         `;
 
+        // Eventos
         const minusBtn = row.querySelector(".cart-item-minus");
         const plusBtn = row.querySelector(".cart-item-plus");
         const removeBtn = row.querySelector(".cart-item-remove");
@@ -811,13 +1515,15 @@
         cartItemsContainer.appendChild(row);
       });
 
+      // Totales
       cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-      cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+      cartTotal.textContent = `$${subtotal.toFixed(2)}`; // envío a definir manualmente
 
       const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
       cartCount.textContent = totalItems.toString();
     }
 
+    // Checkout / WhatsApp
     const checkoutButton = document.getElementById("checkoutButton");
     const formError = document.getElementById("formError");
 
@@ -845,7 +1551,6 @@
       const address = document.getElementById("clientAddress");
       const ref = document.getElementById("clientRef");
       const mapsLink = document.getElementById("clientMapsLink");
-      const table = document.getElementById("clientTable");
       const deliveryType = document.querySelector("input[name='deliveryType']:checked");
 
       let hasError = false;
@@ -862,6 +1567,7 @@
         return;
       }
 
+      // Construir mensaje
       let message = `Hola, soy ${name.value.trim()}.\n`;
       message += `Quiero confirmar mi pedido de asados en barril de ${BUSINESS_NAME}:\n\n`;
 
@@ -872,17 +1578,12 @@
 
       const subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
       message += `\nTotal estimado: $${subtotal.toFixed(2)}\n`;
-      message += `Tipo de servicio: ${deliveryType.value}\n`;
-
-      if (table.value.trim()) {
-        message += `Mesa / ubicación dentro del local: ${table.value.trim()}\n`;
-      }
-
+      message += `Tipo de entrega: ${deliveryType.value}\n`;
       message += `Ciudad / Sector: ${city.value.trim()}\n`;
-      message += `Dirección / referencia principal: ${address.value.trim()}\n`;
+      message += `Dirección completa: ${address.value.trim()}\n`;
 
       if (ref.value.trim()) {
-        message += `Referencias adicionales: ${ref.value.trim()}\n`;
+        message += `Referencias: ${ref.value.trim()}\n`;
       }
 
       if (mapsLink.value.trim()) {
@@ -899,6 +1600,7 @@
       window.open(waUrl, "_blank");
     });
 
+    // Limpiar error al escribir
     ["clientName", "clientPhone", "clientCity", "clientAddress"].forEach(id => {
       const el = document.getElementById(id);
       el.addEventListener("input", () => resetFieldError(el));
