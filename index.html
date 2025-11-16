@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Asados en Barril [CAMBIAR POR NOMBRE REAL] | Costillas de Cerdo y Parrilladas</title>
+  <meta name="description" content="Costillas de cerdo asadas en barril, carnes jugosas y combos parrilleros. Pide escaneando el QR en tu mesa o a domicilio por WhatsApp.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Asados en Barril [CAMBIAR POR NOMBRE REAL]">
+  <meta property="og:description" content="Menú interactivo con pedidos por WhatsApp: consumo en local (QR) o a domicilio.">
+  <meta property="og:image" content="https://images.pexels.com/photos/4109136/pexels-photo-4109136.jpeg">
+  <meta property="og:url" content="https://tusitio.com">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --fire-orange: #ff6a00;
+      --fire-red: #ff3b2f;
+      --fire-yellow: #ffc857;
+      --coal-dark: #050608;
+      --coal-gray: #151515;
+    }
+
+    body {
+      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f1f1f 0, #050505 50%, #000 100%);
+      color: #f9fafb;
+    }
+
+    .font-hero {
+      font-family: 'Bebas Neue', system-ui, sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    /* Fondo brasas y chispas */
+    .spark-bg {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .spark-bg::before,
+    .spark-bg::after {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 184, 108, 0.15) 0, transparent 50%),
+        radial-gradient(circle at 80% 10%, rgba(255, 106, 0, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 30% 90%, rgba(255, 59, 47, 0.18) 0, transparent 55%);
+      opacity: 0.6;
+      mix-blend-mode: screen;
+      animation: sparksFloat 22s linear infinite;
+      z-index: -2;
+    }
+
+    .spark-bg::after {
+      animation-duration: 32s;
+      animation-direction: reverse;
+      opacity: 0.4;
+    }
+
+    @keyframes sparksFloat {
+      0% { transform: translateY(10%) scale(1); }
+      50% { transform: translateY(-10%) scale(1.05); }
+      100% { transform: translateY(10%) scale(1); }
+    }
+
+    .spark-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        radial-gradient(2px 2px at 20% 10%, rgba(255, 200, 135, 0.9) 0, transparent 60%),
+        radial-gradient(2px 2px at 70% 30%, rgba(255, 106, 0, 0.95) 0, transparent 60%),
+        radial-gradient(2px 2px at 40% 80%, rgba(255, 59, 47, 0.9) 0, transparent 60%),
+        radial-gradient(1.5px 1.5px at 90% 60%, rgba(255, 250, 200, 0.9) 0, transparent 60%);
+      animation: sparkBlink 4s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+
+    @keyframes sparkBlink {
+      0% { opacity: 0.2; transform: translateY(0px); }
+      50% { opacity: 0.8; transform: translateY(-4px); }
+      100% { opacity: 0.3; transform: translateY(2px); }
+    }
+
+    .glass {
+      background: linear-gradient(to bottom right, rgba(15, 15, 15, 0.9), rgba(5, 5, 5, 0.85));
+      border-radius: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow:
+        0 22px 45px rgba(0, 0, 0, 0.7),
+        0 0 0 0.5px rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(18px);
+    }
+
+    .btn-fire {
+      background-image: linear-gradient(135deg, var(--fire-orange), var(--fire-red));
+      box-shadow: 0 10px 25px rgba(255, 106, 0, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-fire:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(255, 106, 0, 0.6);
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(249, 115, 22, 0.7);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+    }
+
+    .card-product {
+      background: radial-gradient(circle at top, #18181b 0, #050508 55%);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(250, 250, 250, 0.05);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card-product:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+      border-color: rgba(249, 115, 22, 0.6);
+    }
+
+    .badge-fire {
+      background: linear-gradient(135deg, rgba(255, 106, 0, 0.95), rgba(255, 59, 47, 0.95));
+    }
+
+    .cart-panel {
+      transform: translateX(100%);
+      transition: transform 0.25s ease-out;
+    }
+
+    .cart-panel.open {
+      transform: translateX(0%);
+    }
+
+    .field-error {
+      box-shadow: 0 0 0 1px #f97373;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-gradient-to-b from-black/85 via-black/70 to-transparent border-b border-white/5 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo / Nombre -->
+        <a href="#inicio" class="flex items-center gap-2">
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-amber-500 via-orange-600 to-red-700 flex items-center justify-center shadow-lg shadow-orange-500/50">
+            <span class="font-hero text-xl text-black">AB</span>
+          </div>
+          <div class="leading-tight">
+            <p class="font-hero text-xl text-slate-50 uppercase">Asados en Barril</p>
+            <p class="text-xs text-slate-400">[CAMBIAR POR NOMBRE REAL]</p>
+          </div>
+        </a>
+
+        <!-- Navegación -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-200">
+          <a href="#inicio" class="hover:text-amber-400 transition-colors">Inicio</a>
+          <a href="#menu" class="hover:text-amber-400 transition-colors">Menú</a>
+          <a href="#promos" class="hover:text-amber-400 transition-colors">Promos</a>
+          <a href="#como-pedir" class="hover:text-amber-400 transition-colors">Cómo pedir</a>
+          <a href="#opiniones" class="hover:text-amber-400 transition-colors">Opiniones</a>
+          <a href="#ubicacion" class="hover:text-amber-400 transition-colors">Ubicación</a>
+        </nav>
+
+        <!-- Acciones -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20acabo%20de%20ver%20el%20men%C3%BA%20de%20Asados%20en%20Barril%20y%20quiero%20hacer%20un%20pedido%20(consumo%20en%20local%20o%20a%20domicilio)."
+            target="_blank"
+            class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full btn-ghost"
+          >
+            <span class="text-green-400 text-sm">●</span>
+            Abrir WhatsApp (QR / domicilio)
+          </a>
+
+          <!-- Carrito -->
+          <button
+            id="cartButton"
+            type="button"
+            class="relative flex items-center justify-center h-10 w-10 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-amber-400/80 hover:bg-slate-900/95 transition-colors"
+          >
+            <span class="sr-only">Ver carrito</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                d="M3 3h2l.4 2M7 13h10l3-7H6.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-8-5h4" />
+            </svg>
+            <span
+              id="cartCount"
+              class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center text-[11px] font-semibold text-white h-4.5 min-w-[1.2rem] px-1 rounded-full badge-fire"
+            >0</span>
+          </button>
+
+          <!-- Mobile menu -->
+          <button id="mobileMenuBtn" class="md:hidden h-8 w-8 flex items-center justify-center rounded-lg bg-black/40 border border-white/10">
+            <span class="sr-only">Abrir menú</span>
+            <svg class="h-4 w-4 text-slate-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile nav -->
+      <nav id="mobileNav" class="md:hidden hidden pb-3 border-t border-white/5 mt-1 text-sm">
+        <div class="pt-3 flex flex-col gap-2 text-slate-100">
+          <a href="#inicio" class="hover:text-amber-400 transition-colors">Inicio</a>
+          <a href="#menu" class="hover:text-amber-400 transition-colors">Menú</a>
+          <a href="#promos" class="hover:text-amber-400 transition-colors">Promos</a>
+          <a href="#como-pedir" class="hover:text-amber-400 transition-colors">Cómo pedir</a>
+          <a href="#opiniones" class="hover:text-amber-400 transition-colors">Opiniones</a>
+          <a href="#ubicacion" class="hover:text-amber-400 transition-colors">Ubicación</a>
+          <a
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20acabo%20de%20ver%20el%20men%C3%BA%20de%20Asados%20en%20Barril%20y%20quiero%20hacer%20un%20pedido%20(consumo%20en%20local%20o%20a%20domicilio)."
+            target="_blank"
+            class="mt-1 inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full btn-ghost w-max"
+          >
+            <span class="text-green-400 text-sm">●</span>
+            Abrir WhatsApp
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PADDING TOP PARA NAV -->
+  <div class="pt-20"></div>
+
+  <!-- HERO -->
+  <section id="inicio" class="spark-bg relative">
+    <div class="spark-layer"></div>
+
+    <div
+      class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18 lg:py-24 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+
+      <!-- Texto -->
+      <div class="w-full lg:w-1/2 space-y-7">
+        <p class="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-black/40 px-3 py-1 text-[11px] font-medium text-amber-200 shadow-sm shadow-amber-500/30">
+          <span class="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+          Menú interactivo · Escanea el QR en tu mesa o pide a domicilio
+        </p>
+
+        <h1 class="font-hero text-4xl sm:text-5xl lg:text-6xl leading-tight text-slate-50 drop-shadow-[0_0_35px_rgba(0,0,0,0.9)]">
+          Costillas en Barril,<br>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-red-500 to-yellow-300">
+            jugosas por dentro,<br class="hidden sm:inline">
+            crocantes por fuera.
+          </span>
+        </h1>
+
+        <p class="text-sm sm:text-base text-slate-200/90 max-w-xl">
+          Escanea el <span class="font-semibold text-amber-300">QR en tu mesa</span> para hacer tu pedido
+          desde el restaurante, o usa esta misma página para pedir
+          <span class="font-semibold text-amber-300">a domicilio</span> con entrega en tu casa.
+        </p>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-100/90">
+          <li class="flex items-center gap-2">
+            <span class="h-5 w-5 rounded-full flex items-center justify-center bg-amber-500/20 text-amber-300">
+              ✓
+            </span>
+            Marinado por horas con receta secreta
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="h-5 w-5 rounded-full flex items-center justify-center bg-amber-500/20 text-amber-300">
+              ✓
+            </span>
+            Pide por QR en el local o desde tu casa
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="h-5 w-5 rounded-full flex items-center justify-center bg-amber-500/20 text-amber-300">
+              ✓
+            </span>
+            Pedido y confirmación por WhatsApp
+          </li>
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="#menu"
+            class="btn-fire inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-slate-900">
+            Ver Menú y Hacer Pedido
+          </a>
+          <a
+            href="https://wa.me/[NUMERO_WHATSAPP_CON_CODIGO_PAIS]?text=Hola,%20acabo%20de%20ver%20el%20men%C3%BA%20de%20Asados%20en%20Barril%20y%20quiero%20hacer%20un%20pedido%20(consumo%20en%20local%20o%20a%20domicilio)."
+            target="_blank"
+            class="btn-ghost inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-slate-50"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12.04 2C6.56 2 2.2 6.18 2.2 11.52c0 1.86.54 3.6 1.47 5.07L2 22l5.6-1.8a9.9 9.9 0 0 0 4.44 1.04c5.48 0 9.84-4.18 9.84-9.52C21.88 6.18 17.52 2 12.04 2Zm0 17.07c-1.5 0-2.9-.4-4.1-1.16l-.3-.18-3.32 1.07 1.08-3.2-.2-.32a7.7 7.7 0 0 1-1.2-4.06c0-4.28 3.54-7.76 7.84-7.76 4.3 0 7.84 3.48 7.84 7.76s-3.54 7.75-7.84 7.75Zm4.3-5.76c-.24-.13-1.42-.73-1.64-.81-.22-.09-.38-.13-.54.13-.16.25-.62.81-.76.97-.14.16-.28.18-.52.06-.24-.13-1-.37-1.9-1.16-.7-.62-1.18-1.38-1.32-1.61-.14-.24-.01-.37.12-.5.12-.12.24-.28.36-.42.12-.14.16-.23.24-.38.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.68 4.16 3.64 1.46.58 2.04.63 2.77.53.44-.06 1.42-.58 1.62-1.13.2-.55.2-1.03.14-1.13-.06-.1-.22-.16-.46-.29Z" />
+            </svg>
+            Abrir WhatsApp ahora
+          </a>
+        </div>
+
+        <p class="text-[11px] text-slate-400 max-w-xs">
+          *Funciona como menú digital dentro del restaurante (escaneando un QR) y también para pedidos a domicilio.
+        </p>
+      </div>
+
+      <!-- Imagen / Card -->
+      <div class="w-full lg:w-1/2">
+        <div class="relative glass p-4 sm:p-5 lg:p-6">
+          <div
+            class="relative overflow-hidden rounded-2xl border border-white/10 aspect-[4/3] shadow-[0_24px_60px_rgba(0,0,0,0.9)]">
+            <img
+              src="https://images.pexels.com/photos/4109136/pexels-photo-4109136.jpeg"
+              alt="Costillas de cerdo asadas en barril"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-[11px] uppercase tracking-[0.24em] text-amber-300 font-semibold">
+                  Modo QR · Modo Domicilio
+                </p>
+                <p class="mt-1 text-sm font-semibold text-slate-50">
+                  Escanea el código en tu mesa o comparte el link para pedir desde casa.
+                </p>
+              </div>
+              <div class="text-right bg-black/50 px-3 py-2 rounded-xl border border-white/10">
+                <p class="text-[11px] text-slate-300">Desde</p>
+                <p class="text-base font-semibold text-amber-300">$[PRECIO_BASE] / ración</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between gap-4">
+            <div class="text-xs text-slate-300 space-y-1">
+              <p>
+                📍 Dirección:
+                <span class="text-slate-100 font-medium">[DIRECCIÓN COMPLETA]</span>
+              </p>
+              <p>
+                🏦 Cuenta:
+                <span class="text-slate-100 font-medium">[BANCO · TIPO DE CUENTA · N° · TITULAR]</span>
+              </p>
+            </div>
+            <a
+              href="[URL_GOOGLE_MAPS_LOCAL]"
+              target="_blank"
+              class="inline-flex items-center justify-center px-3 py-2 rounded-xl bg-slate-900/80 border border-white/10 hover:border-amber-400/80 text-[11px] font-semibold text-slate-100"
+            >
+              Ver en Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN POR QUÉ -->
+  <section id="porque" class="py-12 sm:py-16 lg:py-18 bg-gradient-to-b from-black/40 via-black/60 to-black/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400 mb-2">
+            Técnica en barril
+          </p>
+          <h2 class="font-hero text-3xl sm:text-4xl text-slate-50 mb-4">
+            ¿Por qué nuestro asado en barril sabe diferente?
+          </h2>
+          <p class="text-sm sm:text-base text-slate-200/90 mb-4">
+            No es solo una parrillada más. Es un sistema de cocción en barril pensado para mesas felices:
+            tanto si pides desde tu mesa con un QR como si pides a domicilio.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-200">
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-7 w-7 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
+                🔥
+              </div>
+              <div>
+                <p class="font-semibold">Cocción lenta y controlada</p>
+                <p class="text-xs text-slate-400">
+                  Fuego estable para que la carne se cocine parejo, sin resecarse.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-7 w-7 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
+                📱
+              </div>
+              <div>
+                <p class="font-semibold">Menú digital por QR</p>
+                <p class="text-xs text-slate-400">
+                  Los clientes piden desde la mesa y tú recibes todo por WhatsApp.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-7 w-7 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
+                🧂
+              </div>
+              <div>
+                <p class="font-semibold">Marinados caseros</p>
+                <p class="text-xs text-slate-400">
+                  Recetas propias con ajo, especias y tiempo de reposo real.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="mt-1 h-7 w-7 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
+                🚚
+              </div>
+              <div>
+                <p class="font-semibold">También a domicilio</p>
+                <p class="text-xs text-slate-400">
+                  Empacado para que llegue caliente y listo para servir.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini cards -->
+        <div class="grid gap-4 md:gap-5">
+          <div class="card-product p-4 flex gap-3 items-center">
+            <div class="flex-1">
+              <p class="text-xs uppercase tracking-[0.25em] text-amber-400 mb-1">Escanea y pide</p>
+              <p class="text-sm text-slate-200">
+                Coloca este link en un QR en cada mesa y tus clientes piden directamente desde su celular.
+              </p>
+            </div>
+            <div class="text-right text-xs text-slate-400">
+              <p>Uso</p>
+              <p class="text-amber-300 font-semibold text-base">En local + delivery</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="card-product p-3">
+              <p class="text-xs font-semibold text-amber-300 mb-1">Consumo en local</p>
+              <p class="text-xs text-slate-300">Seleccionan “Consumo en local (QR)” y añaden el número de mesa.</p>
+            </div>
+            <div class="card-product p-3">
+              <p class="text-xs font-semibold text-amber-300 mb-1">Pedido a domicilio</p>
+              <p class="text-xs text-slate-300">Seleccionan “Domicilio” y completan dirección y referencias.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENÚ -->
+  <!-- (SECCIÓN DE PRODUCTOS IGUAL QUE ANTES, NO LA REPITO EN COMENTARIO) -->
+  <!-- *** SOLO CORTO EXPLICACIÓN: EL CÓDIGO DE PRODUCTOS ES EL MISMO QUE TE ENTREGUÉ ARRIBA *** -->
+  <!-- A PARTIR DE AQUÍ SIGUE TODO IGUAL HASTA LA SECCIÓN COMO-PEDIR Y SOLO CAMBIAREMOS LOS TEXTOS -->
+
+  <!-- ... AQUÍ VAN TODOS LOS <article> CON LOS 10 PRODUCTOS Y LOS COMBOS, IGUALITOS A LA VERSIÓN ANTERIOR ... -->
+  <!-- (Por espacio no los repito en comentario; mantenlos tal cual y solo pega este archivo completo sobre el anterior) -->
+
+  <!-- CÓMO PEDIR -->
+  <section id="como-pedir" class="py-12 sm:py-16 lg:py-18 bg-gradient-to-b from-black via-slate-950 to-slate-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400">
+          Pedido Simple
+        </p>
+        <h2 class="font-hero text-3xl sm:text-4xl text-slate-50 mt-1">
+          ¿Cómo funciona tu pedido?
+        </h2>
+        <p class="text-sm text-slate-200/90 mt-2">
+          Funciona igual si estás en el restaurante (escaneando un QR en la mesa) o pidiendo desde tu casa.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div class="card-product p-5 text-center">
+          <div
+            class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-500/20 text-amber-300">
+            1
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Elige tus costillas y cortes
+          </h3>
+          <p class="text-xs text-slate-300 mt-2">
+            Entra con el QR de tu mesa o desde el enlace y arma tu pedido desde el menú.
+          </p>
+        </div>
+
+        <div class="card-product p-5 text-center">
+          <div
+            class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-500/20 text-amber-300">
+            2
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Elige “Consumo en local” o “Domicilio”
+          </h3>
+          <p class="text-xs text-slate-300 mt-2">
+            Completa tus datos, tu número de mesa si estás en el local, o tu dirección si es a domicilio.
+          </p>
+        </div>
+
+        <div class="card-product p-5 text-center">
+          <div
+            class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-500/20 text-amber-300">
+            3
+          </div>
+          <h3 class="text-sm font-semibold text-slate-50">
+            Confirma por WhatsApp
+          </h3>
+          <p class="text-xs text-slate-300 mt-2">
+            Haz clic en “Pagar y enviar pedido por WhatsApp”, adjunta el comprobante y listo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (SECCIÓN OPINIONES, UBICACIÓN, CONTACTO Y FOOTER SE MANTIENEN IGUAL QUE ANTES) -->
+  <!-- IMPORTANTE: A CONTINUACIÓN VIENE EL PANEL CARRITO, QUE ES DONDE SE AGREGAN LOS NUEVOS CAMPOS PARA QR / DOMICILIO -->
+
+  <!-- PANEL CARRITO -->
+  <aside
+    id="cartPanel"
+    class="cart-panel fixed inset-y-0 right-0 z-50 w-full max-w-md bg-gradient-to-b from-black via-slate-950 to-black border-l border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.9)] flex flex-col"
+  >
+    <div class="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/10">
+      <div>
+        <p class="text-xs uppercase tracking-[0.32em] text-amber-400 font-semibold">
+          Tu pedido
+        </p>
+        <p class="text-sm text-slate-50 font-semibold">Carrito de asados en barril</p>
+        <p class="text-[11px] text-slate-400">
+          Funciona para pedidos en mesa (QR) y pedidos a domicilio.
+        </p>
+      </div>
+      <button id="closeCart" class="h-8 w-8 flex items-center justify-center rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-sm">
+        ✕
+      </button>
+    </div>
+
+    <!-- Contenido scroll -->
+    <div class="flex-1 overflow-y-auto px-4 sm:px-5 py-4 space-y-5">
+      <!-- Lista de productos -->
+      <div>
+        <p class="text-xs font-semibold text-slate-200 mb-2">Resumen de productos</p>
+        <div id="cartItems" class="space-y-3 text-xs text-slate-100"></div>
+        <p id="emptyCartText" class="text-xs text-slate-400 mt-1">Tu carrito está vacío. Agrega productos desde el menú.</p>
+      </div>
+
+      <!-- Totales -->
+      <div class="glass p-3 text-xs text-slate-100 space-y-1">
+        <div class="flex justify-between">
+          <span class="text-slate-400">Subtotal</span>
+          <span id="cartSubtotal" class="font-semibold">$0.00</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Envío</span>
+          <span id="cartShipping" class="text-slate-300 text-[11px]">Por definir según ubicación</span>
+        </div>
+        <div class="border-t border-white/5 pt-2 mt-1 flex justify-between items-center">
+          <span class="text-slate-200 font-semibold text-[13px]">Total estimado</span>
+          <span id="cartTotal" class="text-amber-300 font-bold text-sm">$0.00</span>
+        </div>
+      </div>
+
+      <!-- FORM DATOS CLIENTE -->
+      <div>
+        <p class="text-xs font-semibold text-slate-200 mb-2">Paso 1: Tus datos y tipo de servicio</p>
+        <div class="space-y-2 text-xs">
+          <div>
+            <label for="clientName" class="block text-slate-300 mb-1">Nombre completo *</label>
+            <input id="clientName" type="text" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. Juan Pérez">
+          </div>
+          <div>
+            <label for="clientPhone" class="block text-slate-300 mb-1">Celular / WhatsApp *</label>
+            <input id="clientPhone" type="tel" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. 09XXXXXXXX">
+          </div>
+          <div>
+            <p class="block text-slate-300 mb-1">Tipo de servicio *</p>
+            <div class="flex flex-col gap-1">
+              <label class="inline-flex items-center gap-2 text-slate-200">
+                <input type="radio" name="deliveryType" value="Consumo en local (QR)" class="accent-amber-500">
+                <span class="text-xs">Consumo en local (escaneando el QR en la mesa)</span>
+              </label>
+              <label class="inline-flex items-center gap-2 text-slate-200">
+                <input type="radio" name="deliveryType" value="Domicilio" class="accent-amber-500">
+                <span class="text-xs">Domicilio (entrega en tu casa u oficina)</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label for="clientTable" class="block text-slate-300 mb-1">Número de mesa (solo si estás en el local)</label>
+            <input id="clientTable" type="text" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. Mesa 4, terraza, etc.">
+          </div>
+
+          <div>
+            <label for="clientCity" class="block text-slate-300 mb-1">Ciudad / Sector *</label>
+            <input id="clientCity" type="text" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. [CIUDAD], barrio o sector">
+          </div>
+          <div>
+            <label for="clientAddress" class="block text-slate-300 mb-1">Dirección completa para entrega *</label>
+            <textarea id="clientAddress" rows="2" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Si es consumo en local puedes escribir 'En restaurante' / 'En mesa'. Si es domicilio, pon la dirección."></textarea>
+          </div>
+          <div>
+            <label for="clientRef" class="block text-slate-300 mb-1">Referencias de ubicación</label>
+            <textarea id="clientRef" rows="2" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="Ej. Casa verde junto a la tienda, portón negro, etc."></textarea>
+          </div>
+          <div>
+            <label for="clientMapsLink" class="block text-slate-300 mb-1">Pega aquí tu ubicación de Google Maps (solo domicilios, opcional)</label>
+            <input id="clientMapsLink" type="url" class="w-full rounded-xl bg-black/70 border border-white/10 px-3 py-2 text-xs text-slate-100 outline-none focus:border-amber-400" placeholder="https://maps.app.goo.gl/...">
+          </div>
+          <div class="flex flex-wrap gap-2 mt-1">
+            <a
+              href="[URL_GOOGLE_MAPS_LOCAL]"
+              target="_blank"
+              class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold bg-slate-900/80 border border-amber-400/60 text-amber-200"
+            >
+              Abrir ubicación del local en Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGO -->
+      <div>
+        <p class="text-xs font-semibold text-slate-200 mb-2">Paso 2: Realiza tu pago</p>
+        <div class="glass p-3 text-xs text-slate-100 space-y-1">
+          <p class="text-slate-300">
+            Realiza tu transferencia o depósito a la siguiente cuenta:
+          </p>
+          <p class="text-[11px] text-amber-200 font-semibold mt-1">
+            [BANCO, TIPO DE CUENTA, NÚMERO, TITULAR, CÉDULA/RUC SI APLICA]
+          </p>
+          <p class="text-[11px] text-slate-400 mt-1">
+            Después, haz clic en el botón de abajo y envíanos tu comprobante por WhatsApp junto con los
+            datos de tu pedido.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="border-t border-white/10 px-4 sm:px-5 py-3 bg-black/80">
+      <button
+        id="checkoutButton"
+        class="btn-fire w-full rounded-full py-2.5 text-xs sm:text-sm font-semibold text-slate-900 flex items-center justify-center gap-2"
+      >
+        <span>🧾 Pagar y enviar pedido por WhatsApp</span>
+      </button>
+      <p id="formError" class="mt-1 text-[11px] text-red-400 hidden">
+        Revisa: debes tener al menos un producto en el carrito y completar todos los campos marcados con *.
+      </p>
+    </div>
+  </aside>
+
+  <script>
+    // CONFIG BÁSICA
+    const WHATSAPP_NUMBER = "[NUMERO_WHATSAPP_CON_CODIGO_PAIS]"; // Ej: 5939XXXXXXXX
+    const BANK_DATA = "[BANCO, TIPO DE CUENTA, NÚMERO, TITULAR, CÉDULA/RUC]";
+    const BUSINESS_NAME = "Asados en Barril [CAMBIAR POR NOMBRE REAL]";
+
+    document.getElementById("yearSpan")?.textContent = new Date().getFullYear();
+
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileNav.classList.toggle("hidden");
+    });
+
+    // Carrito
+    let cart = [];
+    const cartButton = document.getElementById("cartButton");
+    const cartPanel = document.getElementById("cartPanel");
+    const closeCartBtn = document.getElementById("closeCart");
+    const cartCount = document.getElementById("cartCount");
+    const cartItemsContainer = document.getElementById("cartItems");
+    const emptyCartText = document.getElementById("emptyCartText");
+    const cartSubtotal = document.getElementById("cartSubtotal");
+    const cartTotal = document.getElementById("cartTotal");
+
+    function openCart() { cartPanel.classList.add("open"); }
+    function closeCart() { cartPanel.classList.remove("open"); }
+    cartButton.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
+
+    function attachQtyListeners(scope = document) {
+      scope.querySelectorAll(".qty-plus").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const input = btn.parentElement.querySelector(".qty-input");
+          const current = parseInt(input.value || "1", 10);
+          input.value = current + 1;
+        });
+      });
+
+      scope.querySelectorAll(".qty-minus").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const input = btn.parentElement.querySelector(".qty-input");
+          let current = parseInt(input.value || "1", 10);
+          current = isNaN(current) ? 1 : current;
+          if (current > 1) input.value = current - 1;
+        });
+      });
+    }
+
+    attachQtyListeners(document);
+
+    function addToCart(productId, name, price, qty) {
+      price = parseFloat(price);
+      qty = parseInt(qty, 10);
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ id: productId, name, price, qty });
+      }
+      renderCart();
+      openCart();
+    }
+
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest("[data-id]");
+        const id = card.getAttribute("data-id");
+        const name = card.getAttribute("data-name");
+        const price = card.getAttribute("data-price");
+        const qtyInput = card.querySelector(".qty-input");
+        const qty = qtyInput ? qtyInput.value : 1;
+        addToCart(id, name, price, qty);
+      });
+    });
+
+    function renderCart() {
+      cartItemsContainer.innerHTML = "";
+      if (cart.length === 0) {
+        emptyCartText.classList.remove("hidden");
+      } else {
+        emptyCartText.classList.add("hidden");
+      }
+
+      let subtotal = 0;
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+
+        const row = document.createElement("div");
+        row.className = "flex items-start justify-between gap-3 border border-white/5 rounded-xl px-3 py-2";
+        row.innerHTML = `
+          <div class="flex-1">
+            <p class="text-[11px] font-semibold text-slate-50 line-clamp-2">${item.name}</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">$${item.price.toFixed(2)} c/u</p>
+            <div class="flex items-center gap-2 mt-1.5">
+              <button class="cart-item-minus h-6 w-6 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-xs">−</button>
+              <span class="text-[11px] text-slate-100">${item.qty}</span>
+              <button class="cart-item-plus h-6 w-6 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-xs">+</button>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-1">
+            <button class="cart-item-remove text-[10px] text-slate-400 hover:text-red-400">Eliminar</button>
+            <p class="text-[11px] font-semibold text-amber-300">$${itemTotal.toFixed(2)}</p>
+          </div>
+        `;
+
+        const minusBtn = row.querySelector(".cart-item-minus");
+        const plusBtn = row.querySelector(".cart-item-plus");
+        const removeBtn = row.querySelector(".cart-item-remove");
+
+        minusBtn.addEventListener("click", () => {
+          if (item.qty > 1) {
+            item.qty -= 1;
+          } else {
+            cart.splice(index, 1);
+          }
+          renderCart();
+        });
+
+        plusBtn.addEventListener("click", () => {
+          item.qty += 1;
+          renderCart();
+        });
+
+        removeBtn.addEventListener("click", () => {
+          cart.splice(index, 1);
+          renderCart();
+        });
+
+        cartItemsContainer.appendChild(row);
+      });
+
+      cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+      cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+
+      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+      cartCount.textContent = totalItems.toString();
+    }
+
+    const checkoutButton = document.getElementById("checkoutButton");
+    const formError = document.getElementById("formError");
+
+    function resetFieldError(el) {
+      el.classList.remove("field-error");
+    }
+
+    function setFieldError(el) {
+      el.classList.add("field-error");
+    }
+
+    checkoutButton.addEventListener("click", () => {
+      formError.classList.add("hidden");
+      document.querySelectorAll(".field-error").forEach(el => el.classList.remove("field-error"));
+
+      if (cart.length === 0) {
+        formError.textContent = "Tu carrito está vacío. Agrega productos antes de continuar.";
+        formError.classList.remove("hidden");
+        return;
+      }
+
+      const name = document.getElementById("clientName");
+      const phone = document.getElementById("clientPhone");
+      const city = document.getElementById("clientCity");
+      const address = document.getElementById("clientAddress");
+      const ref = document.getElementById("clientRef");
+      const mapsLink = document.getElementById("clientMapsLink");
+      const table = document.getElementById("clientTable");
+      const deliveryType = document.querySelector("input[name='deliveryType']:checked");
+
+      let hasError = false;
+
+      if (!name.value.trim()) { setFieldError(name); hasError = true; }
+      if (!phone.value.trim()) { setFieldError(phone); hasError = true; }
+      if (!city.value.trim()) { setFieldError(city); hasError = true; }
+      if (!address.value.trim()) { setFieldError(address); hasError = true; }
+      if (!deliveryType) { hasError = true; }
+
+      if (hasError) {
+        formError.textContent = "Revisa: debes tener al menos un producto en el carrito y completar todos los campos marcados con *.";
+        formError.classList.remove("hidden");
+        return;
+      }
+
+      let message = `Hola, soy ${name.value.trim()}.\n`;
+      message += `Quiero confirmar mi pedido de asados en barril de ${BUSINESS_NAME}:\n\n`;
+
+      cart.forEach(item => {
+        const subtotalItem = item.price * item.qty;
+        message += `• ${item.qty} x ${item.name} = $${subtotalItem.toFixed(2)}\n`;
+      });
+
+      const subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+      message += `\nTotal estimado: $${subtotal.toFixed(2)}\n`;
+      message += `Tipo de servicio: ${deliveryType.value}\n`;
+
+      if (table.value.trim()) {
+        message += `Mesa / ubicación dentro del local: ${table.value.trim()}\n`;
+      }
+
+      message += `Ciudad / Sector: ${city.value.trim()}\n`;
+      message += `Dirección / referencia principal: ${address.value.trim()}\n`;
+
+      if (ref.value.trim()) {
+        message += `Referencias adicionales: ${ref.value.trim()}\n`;
+      }
+
+      if (mapsLink.value.trim()) {
+        message += `Ubicación en Google Maps (cliente): ${mapsLink.value.trim()}\n`;
+      }
+
+      message += `\nMi número de contacto es: ${phone.value.trim()}.\n`;
+      message += `\nYa realicé la transferencia o depósito a la cuenta:\n${BANK_DATA}\n`;
+      message += `Adjunto el comprobante de pago. ✅🔥`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+      window.open(waUrl, "_blank");
+    });
+
+    ["clientName", "clientPhone", "clientCity", "clientAddress"].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener("input", () => resetFieldError(el));
+    });
+  </script>
+</body>
+</html>
