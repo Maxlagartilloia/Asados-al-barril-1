@@ -7,7 +7,7 @@
 
   <!-- SEO básico -->
   <meta name="description" content="Punto Cero al Barril: costillas, panceta, pollo al barril, asados y cortes premium en el Barrio Las Vegas, calle Pablo Milanés, Shushufindi. Sabor al fuego con estilo." />
-  <meta name="keywords" content="punto cero al barril, costillas al barril, asados, cortés premium, Shushufindi, barrio Las Vegas" />
+  <meta name="keywords" content="punto cero al barril, costillas al barril, asados, cortes premium, Shushufindi, barrio Las Vegas" />
   <meta name="author" content="Punto Cero al Barril" />
 
   <!-- Tailwind CSS CDN -->
@@ -41,13 +41,11 @@
       letter-spacing: 0.18em;
     }
 
-    /* Glass efecto leve en header */
     .glass-header {
       background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(3, 7, 18, 0.9));
       backdrop-filter: blur(10px);
     }
 
-    /* Animaciones suaves */
     .btn-main {
       transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
     }
@@ -92,6 +90,7 @@
         <a href="#hero" class="hover:text-[var(--accent)] transition">Inicio</a>
         <a href="#nosotros" class="hover:text-[var(--accent)] transition">Nosotros</a>
         <a href="#menu" class="hover:text-[var(--accent)] transition">Menú</a>
+        <a href="#carrito" class="hover:text-[var(--accent)] transition">Carrito</a>
         <a href="#ubicacion" class="hover:text-[var(--accent)] transition">Ubicación</a>
         <a href="#contacto" class="hover:text-[var(--accent)] transition">Contacto</a>
       </nav>
@@ -127,16 +126,15 @@
 
         <!-- Botones -->
         <div class="flex flex-wrap gap-3">
-          <a href="https://wa.me/593988025075?text=Hola%20quiero%20hacer%20un%20pedido%20en%20Punto%20Cero%20al%20Barril"
-             target="_blank"
+          <a href="#menu"
              class="btn-main px-5 py-2.5 bg-[var(--accent)] hover:bg-yellow-400 text-black font-semibold rounded-full text-sm md:text-base inline-flex items-center gap-2">
-            <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Hacer pedido</span>
+            <i class="fa-solid fa-utensils text-lg"></i>
+            <span>Ver menú</span>
           </a>
 
-          <a href="#menu"
+          <a href="#carrito"
              class="px-5 py-2.5 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black font-semibold rounded-full text-sm md:text-base transition">
-            Ver menú
+            Ver carrito
           </a>
         </div>
 
@@ -169,7 +167,6 @@
         <div class="rounded-3xl overflow-hidden shadow-2xl border border-[var(--accent)]/40">
           <img src="hero.jpg" alt="Costillas y asados de Punto Cero al Barril" class="w-full h-72 md:h-96 object-cover" />
         </div>
-        <!-- Glow -->
         <div class="pointer-events-none absolute -inset-4 -z-10 bg-gradient-to-tr from-[var(--accent-strong)]/10 via-transparent to-[var(--accent)]/10 blur-3xl opacity-70"></div>
       </div>
     </div>
@@ -179,7 +176,7 @@
   <section id="nosotros" class="py-10 md:py-14">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
       <div class="space-y-4 md:space-y-5">
-        <h2 class="text-2xl md:text-3xl font-bold">
+        <h2 class="text-2xl md:3xl font-bold">
           Punto Cero al Barril, donde el fuego manda 🔥
         </h2>
         <p class="text-sm md:text-base text-[var(--text-muted)]">
@@ -198,7 +195,6 @@
         </ul>
       </div>
 
-      <!-- Bloque de info rápida -->
       <div class="bg-[var(--bg-card)]/90 border border-slate-800 rounded-2xl p-5 md:p-6 shadow-xl space-y-4">
         <h3 class="font-semibold text-lg md:text-xl mb-1 flex items-center gap-2">
           <i class="fa-solid fa-fire-flame-curved text-[var(--accent-strong)]"></i>
@@ -253,17 +249,28 @@
   <section id="menu" class="py-10 md:py-14 bg-black/60 border-y border-slate-800">
     <div class="max-w-6xl mx-auto px-4">
 
-      <div class="text-center mb-8">
-        <p class="title-font text-[var(--accent-strong)] text-sm tracking-[0.35em] uppercase mb-1">
-          Menú
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-2">
-          Platos estrella al barril y a la parrilla
-        </h2>
-        <p class="text-sm md:text-base text-[var(--text-muted)] max-w-2xl mx-auto">
-          Estos son algunos de nuestros cortes y preparaciones más pedidos. Pregunta en el local
-          por las opciones del día y combos para compartir.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div class="text-center md:text-left">
+          <p class="title-font text-[var(--accent-strong)] text-sm tracking-[0.35em] uppercase mb-1">
+            Menú
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-2">
+            Platos estrella al barril y a la parrilla
+          </h2>
+          <p class="text-sm md:text-base text-[var(--text-muted)] max-w-2xl">
+            Elige tus platos, agrégalos al carrito y al final confirma si es para servirse en mesa, para llevar o a domicilio.
+          </p>
+        </div>
+
+        <div class="text-center md:text-right text-sm">
+          <p class="text-[var(--text-muted)]">
+            <span class="font-semibold text-white">Carrito:</span>
+            <span id="cart-summary-mini">0 productos · $0.00</span>
+          </p>
+          <a href="#carrito" class="inline-flex items-center gap-2 text-[var(--accent)] hover:text-[var(--accent-strong)] text-xs mt-1">
+            <i class="fa-solid fa-cart-shopping"></i> Ver detalle del carrito
+          </a>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -276,7 +283,13 @@
             <p class="text-xs text-[var(--text-muted)]">
               Costillas jugosas, cocinadas al barril, con salsa especial de la casa.
             </p>
-            <p class="mt-2 font-bold text-[var(--accent)] text-sm">$9.90</p>
+            <p class="font-bold text-[var(--accent)] text-sm">$9.90</p>
+            <button
+              class="mt-2 w-full btn-main inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] hover:bg-yellow-400 text-black text-xs font-semibold"
+              onclick="addToCart('Costillas al barril', 9.90)">
+              <i class="fa-solid fa-cart-plus"></i>
+              Agregar al carrito
+            </button>
           </div>
         </article>
 
@@ -288,7 +301,13 @@
             <p class="text-xs text-[var(--text-muted)]">
               Panceta dorada por fuera y suave por dentro, con el ahumado perfecto.
             </p>
-            <p class="mt-2 font-bold text-[var(--accent)] text-sm">$8.50</p>
+            <p class="font-bold text-[var(--accent)] text-sm">$8.50</p>
+            <button
+              class="mt-2 w-full btn-main inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] hover:bg-yellow-400 text-black text-xs font-semibold"
+              onclick="addToCart('Panceta al barril', 8.50)">
+              <i class="fa-solid fa-cart-plus"></i>
+              Agregar al carrito
+            </button>
           </div>
         </article>
 
@@ -300,7 +319,13 @@
             <p class="text-xs text-[var(--text-muted)]">
               Pollo tierno, marinado y cocinado al barril, ideal para compartir.
             </p>
-            <p class="mt-2 font-bold text-[var(--accent)] text-sm">$7.90</p>
+            <p class="font-bold text-[var(--accent)] text-sm">$7.90</p>
+            <button
+              class="mt-2 w-full btn-main inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] hover:bg-yellow-400 text-black text-xs font-semibold"
+              onclick="addToCart('Pollo al barril', 7.90)">
+              <i class="fa-solid fa-cart-plus"></i>
+              Agregar al carrito
+            </button>
           </div>
         </article>
 
@@ -312,7 +337,13 @@
             <p class="text-xs text-[var(--text-muted)]">
               Corte de res a la parrilla, con guarniciones y salsas al gusto.
             </p>
-            <p class="mt-2 font-bold text-[var(--accent)] text-sm">$10.50</p>
+            <p class="font-bold text-[var(--accent)] text-sm">$10.50</p>
+            <button
+              class="mt-2 w-full btn-main inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] hover:bg-yellow-400 text-black text-xs font-semibold"
+              onclick="addToCart('Asado de la casa', 10.50)">
+              <i class="fa-solid fa-cart-plus"></i>
+              Agregar al carrito
+            </button>
           </div>
         </article>
 
@@ -324,19 +355,93 @@
             <p class="text-xs text-[var(--text-muted)]">
               Corte seleccionado, término a elección, para quienes buscan una experiencia completa.
             </p>
-            <p class="mt-2 font-bold text-[var(--accent)] text-sm">$14.90</p>
+            <p class="font-bold text-[var(--accent)] text-sm">$14.90</p>
+            <button
+              class="mt-2 w-full btn-main inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] hover:bg-yellow-400 text-black text-xs font-semibold"
+              onclick="addToCart('Corte premium', 14.90)">
+              <i class="fa-solid fa-cart-plus"></i>
+              Agregar al carrito
+            </button>
           </div>
         </article>
 
       </div>
+    </div>
+  </section>
 
-      <div class="text-center mt-8">
-        <a href="https://wa.me/593988025075?text=Hola%20me%20gustar%C3%ADa%20ver%20el%20men%C3%BA%20completo%20de%20Punto%20Cero%20al%20Barril"
-           target="_blank"
-           class="btn-main inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-strong)] hover:bg-orange-500 text-black font-semibold rounded-full text-sm md:text-base">
+  <!-- CARRITO -->
+  <section id="carrito" class="py-10 md:py-12 bg-black/80 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-[1.4fr,1fr] gap-8">
+      <!-- Resumen del carrito -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-[var(--accent)]"></i>
+          Tu pedido
+        </h2>
+        <p class="text-sm md:text-base text-[var(--text-muted)] mb-4">
+          Aquí verás los platos que agregues al carrito. Antes de enviar el pedido debes elegir
+          si es para servirse en mesa, para llevar o a domicilio.
+        </p>
+
+        <div id="cart-empty" class="text-sm text-[var(--text-muted)] border border-dashed border-slate-700 rounded-xl p-4">
+          Aún no has agregado platos al carrito. Ve al menú y toca <strong>“Agregar al carrito”</strong>.
+        </div>
+
+        <div id="cart-items-container" class="hidden">
+          <div id="cart-items" class="space-y-3 text-sm md:text-base"></div>
+
+          <div class="mt-4 flex items-center justify-between text-sm md:text-base">
+            <p class="text-[var(--text-muted)]">
+              <span class="font-semibold text-white">Productos:</span>
+              <span id="cart-count">0</span>
+            </p>
+            <p class="text-[var(--text-muted)]">
+              <span class="font-semibold text-white">Total aprox:</span>
+              <span id="cart-total">$0.00</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tipo de servicio + enviar -->
+      <div class="bg-[var(--bg-card)] border border-slate-800 rounded-2xl p-5 md:p-6 shadow-xl space-y-4">
+        <h3 class="font-semibold text-lg md:text-xl mb-1">
+          Tipo de servicio
+        </h3>
+        <p class="text-xs md:text-sm text-[var(--text-muted)]">
+          Elige cómo deseas recibir tu pedido. Esta información aparecerá claramente en el mensaje de WhatsApp.
+        </p>
+
+        <div class="space-y-2 text-sm md:text-base">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="service-type" value="Servirse en mesa" class="accent-[var(--accent-strong)]">
+            <span>🍽️ Servirse en mesa</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="service-type" value="Para llevar" class="accent-[var(--accent-strong)]">
+            <span>🛍️ Para llevar</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="service-type" value="Domicilio" class="accent-[var(--accent-strong)]">
+            <span>🏠 Envío a domicilio</span>
+          </label>
+        </div>
+
+        <div class="space-y-2 text-xs md:text-sm text-[var(--text-muted)]">
+          <p>En pedidos a domicilio, el costo del envío se confirma por WhatsApp según la dirección.</p>
+        </div>
+
+        <button
+          onclick="sendOrderWhatsApp()"
+          class="btn-main inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-full text-sm md:text-base">
           <i class="fa-brands fa-whatsapp text-lg"></i>
-          Ver menú completo por WhatsApp
-        </a>
+          Enviar pedido por WhatsApp
+        </button>
+
+        <p class="text-[var(--text-muted)] text-[11px] md:text-xs">
+          Al tocar el botón se abrirá WhatsApp con tu pedido detallado: platos, cantidades, total aproximado
+          y el tipo de servicio que seleccionaste.
+        </p>
       </div>
     </div>
   </section>
@@ -364,7 +469,6 @@
         </p>
       </div>
 
-      <!-- Mapa integrado -->
       <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl h-64 md:h-80">
         <iframe
           src="https://www.google.com/maps?q=Punto%20Cero%20al%20Barril&output=embed"
@@ -379,7 +483,6 @@
   <!-- CONTACTO -->
   <section id="contacto" class="py-10 bg-black/80 border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-[1.4fr,1fr] gap-8">
-      <!-- Datos de contacto -->
       <div class="space-y-4 md:space-y-5">
         <h2 class="text-2xl md:text-3xl font-bold">Contacto y pedidos</h2>
         <p class="text-sm md:text-base text-[var(--text-muted)]">
@@ -429,7 +532,6 @@
         </div>
       </div>
 
-      <!-- Llamado a la acción -->
       <div class="bg-[var(--bg-card)] border border-slate-800 rounded-2xl p-5 md:p-6 shadow-xl space-y-4">
         <h3 class="font-semibold text-lg md:text-xl mb-1">
           ¿Listo para un asado épico?
@@ -457,8 +559,138 @@
   </footer>
 
   <script>
-    // Año dinámico en el footer
+    // Año dinámico
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --- LÓGICA DEL CARRITO ---
+    let cart = [];
+
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      updateCartUI();
+    }
+
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      updateCartUI();
+    }
+
+    function changeQty(name, delta) {
+      const item = cart.find(i => i.name === name);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        removeFromCart(name);
+      } else {
+        updateCartUI();
+      }
+    }
+
+    function updateCartUI() {
+      const cartEmpty = document.getElementById("cart-empty");
+      const cartItemsContainer = document.getElementById("cart-items-container");
+      const cartItemsDiv = document.getElementById("cart-items");
+      const cartCountSpan = document.getElementById("cart-count");
+      const cartTotalSpan = document.getElementById("cart-total");
+      const cartSummaryMini = document.getElementById("cart-summary-mini");
+
+      if (!cart.length) {
+        cartEmpty.classList.remove("hidden");
+        cartItemsContainer.classList.add("hidden");
+        cartSummaryMini.textContent = "0 productos · $0.00";
+        cartCountSpan.textContent = "0";
+        cartTotalSpan.textContent = "$0.00";
+        cartItemsDiv.innerHTML = "";
+        return;
+      }
+
+      cartEmpty.classList.add("hidden");
+      cartItemsContainer.classList.remove("hidden");
+
+      let total = 0;
+      let totalItems = 0;
+      cartItemsDiv.innerHTML = "";
+
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        totalItems += item.qty;
+
+        const row = document.createElement("div");
+        row.className = "flex items-center justify-between gap-3 border border-slate-700 rounded-lg px-3 py-2";
+
+        row.innerHTML = `
+          <div class="flex-1">
+            <p class="font-semibold text-sm md:text-base">${item.name}</p>
+            <p class="text-[11px] md:text-xs text-[var(--text-muted)]">
+              Cant: ${item.qty} · $${item.price.toFixed(2)} c/u
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="text-xs px-2 py-1 rounded-full border border-slate-600 hover:bg-slate-700"
+                    onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)">
+              -
+            </button>
+            <span class="text-sm md:text-base w-6 text-center">${item.qty}</span>
+            <button class="text-xs px-2 py-1 rounded-full border border-slate-600 hover:bg-slate-700"
+                    onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)">
+              +
+            </button>
+            <button class="text-xs px-2 py-1 rounded-full border border-rose-600 text-rose-400 hover:bg-rose-900/40"
+                    onclick="removeFromCart('${item.name.replace(/'/g, "\\'")}')">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `;
+        cartItemsDiv.appendChild(row);
+      });
+
+      cartCountSpan.textContent = totalItems.toString();
+      cartTotalSpan.textContent = "$" + total.toFixed(2);
+      cartSummaryMini.textContent = `${totalItems} producto${totalItems !== 1 ? "s" : ""} · $${total.toFixed(2)}`;
+    }
+
+    function getSelectedServiceType() {
+      const radios = document.querySelectorAll('input[name="service-type"]');
+      for (const r of radios) {
+        if (r.checked) return r.value;
+      }
+      return null;
+    }
+
+    function sendOrderWhatsApp() {
+      if (!cart.length) {
+        alert("Primero agrega platos al carrito.");
+        return;
+      }
+
+      const serviceType = getSelectedServiceType();
+      if (!serviceType) {
+        alert("Por favor, selecciona el tipo de servicio: servirse en mesa, para llevar o domicilio.");
+        return;
+      }
+
+      let total = 0;
+      let lines = cart.map(item => {
+        total += item.price * item.qty;
+        return `- ${item.qty}x ${item.name} ($${item.price.toFixed(2)} c/u)`;
+      }).join("\n");
+
+      const message =
+        "Hola, quiero hacer un pedido en Punto Cero al Barril.%0A%0A" +
+        "Tipo de servicio: " + encodeURIComponent(serviceType) + "%0A%0A" +
+        "Pedido:%0A" + encodeURIComponent(lines) + "%0A%0A" +
+        "Total aproximado: $" + total.toFixed(2) + "%0A%0A" +
+        "(Confirmar disponibilidad de platos y horarios, por favor).";
+
+      const phone = "593988025075";
+      const url = "https://wa.me/" + phone + "?text=" + message;
+      window.open(url, "_blank");
+    }
   </script>
 </body>
 </html>
